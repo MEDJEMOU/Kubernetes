@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume # Create a PV
+metadata:
+  name: postgresql-data # Sets PV's name
+  namespace: prod
+  labels:
+    type: local # Sets PV's type to local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi # Sets PV Volume
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/tmp/data4/data/volumes/test/01/02" # Sets the volume's path
+  persistentVolumeReclaimPolicy: Recycle
